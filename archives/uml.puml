@@ -1,0 +1,52 @@
+@startuml
+interface IAccountManager {
+    +current(): User
+    +update(user: User)
+}
+class ViewModel
+class ReposViewModel {
+    -dispatcher: Dispatchers
+    -accountManager: IAccountManager
+    -uiState: ReposUIState
+    +loadRepos(): List<Repo>
+}
+
+interface IGithubApiService {
+    +loadRepos(): List<DTORepo>
+}
+
+class XenoNet {
+    {static}+loadRepos(): List<Repo>
+}
+
+class Dispatchers {
+    {static}+IO
+}
+
+class CommonUIState {
+    +isLoading
+    +isError
+}
+
+class RepoUIState {
+    +data: List<Repo>
+}
+
+class AccountManagerImpl {
+    +instanceProvider(): IAccountManager
+}
+
+class ReposScreen {
+    +@Composable ReposScreen()
+}
+
+IAccountManager <|.. AccountManagerImpl
+CommonUIState <|-- RepoUIState
+RepoUIState <.. ReposViewModel
+IAccountManager <.. ReposViewModel
+Dispatchers <.. ReposViewModel
+XenoNet <.. ReposViewModel
+ViewModel <|-- ReposViewModel
+IGithubApiService <.. XenoNet
+ReposViewModel <.. ReposScreen
+@enduml
