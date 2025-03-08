@@ -68,6 +68,17 @@ android {
 }
 
 kover {
+    reports {
+        filters {
+            excludes {
+                // exclusion rules - classes to exclude from report
+                classes(
+                    "io.nebula.xenogithub.viewmodel.*_Factory",
+                    "io.nebula.xenogithub.viewmodel.*_HiltModules*",
+                )
+            }
+        }
+    }
 }
 
 dependencies {

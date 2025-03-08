@@ -27,7 +27,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import io.nebula.xenogithub.R
 import io.nebula.xenogithub.ui.components.ReposList
 import io.nebula.xenogithub.ui.navigation.NavigationActions

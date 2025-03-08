@@ -18,7 +18,6 @@ object KVStorageImpl {
     private val ACCESS_TOKEN = stringPreferencesKey("access_token")
     private val ACCESS_CODE = stringPreferencesKey("access_code")
 
-    // todo simplify
     suspend fun saveAccessToken(context: Context, value: String) {
         context.dataStore.edit { settings ->
             settings[ACCESS_TOKEN] = value

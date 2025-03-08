@@ -104,6 +104,19 @@ class AccountViewModelTest {
     }
 
     @Test
+    fun test_oauth_authenticate_but_token_is_null() = runTest {
+        every { KVStorageImpl.getAccessToken(any()) } returns ""
+        every { KVStorageImpl.getAccessCode(any()) } returns "valid_code"
+        coEvery { KVStorageImpl.saveAccessToken(any(), any()) } just Runs
+
+        val mockUser = mockUser.copy(_token = null)
+        coEvery { XenoNet.oauth("valid_code") } returns Result.success(mockUser)
+
+        viewModel.oauth(mockk())
+        coVerify { KVStorageImpl.saveAccessToken(any(), "") }
+    }
+
+    @Test
     fun test_oauth() = runTest {
         every { KVStorageImpl.getAccessToken(any()) } returns ""
         every { KVStorageImpl.getAccessCode(any()) } returns ""
@@ -119,6 +132,18 @@ class AccountViewModelTest {
         every { KVStorageImpl.getAccessToken(any()) } returns "invalid"
         every { KVStorageImpl.getAccessCode(any()) } returns ""
         coEvery { XenoNet.refresh(any()) } returns Result.failure(RuntimeException("Network error"))
+
+        viewModel.oauth(mockk())
+
+        assert(viewModel.uiState.value.isError)
+        assert(!viewModel.uiState.value.isLoading)
+    }
+
+    @Test
+    fun test_oauth_error() = runTest {
+        every { KVStorageImpl.getAccessToken(any()) } returns ""
+        every { KVStorageImpl.getAccessCode(any()) } returns "valid"
+        coEvery { XenoNet.oauth(any()) } returns Result.failure(RuntimeException("Network error"))
 
         viewModel.oauth(mockk())
 
