@@ -24,8 +24,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import io.nebula.xenogithub.R
 import io.nebula.xenogithub.biz.model.User
 import io.nebula.xenogithub.ui.components.Avatar
@@ -41,7 +41,7 @@ fun UserProfileScreen(
     user: User?,
     onSignOut: () -> Unit,
     itemOnClick: (owner: String, repo: String) -> Unit,
-    viewModel: UserProfilerViewModel = viewModel()
+    viewModel: UserProfilerViewModel = hiltViewModel()
 ) {
     if (user == null) {
         ErrorScreen { }

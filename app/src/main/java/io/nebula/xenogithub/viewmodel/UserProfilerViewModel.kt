@@ -3,8 +3,6 @@ package io.nebula.xenogithub.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dagger.hilt.android.lifecycle.HiltViewModel
-import io.nebula.xenogithub.biz.manager.IAccountManager
 import io.nebula.xenogithub.biz.model.Repository
 import io.nebula.xenogithub.biz.model.User
 import io.nebula.xenogithub.biz.network.XenoNet
@@ -16,12 +14,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 /**
  * Created by nebula on 2025/3/7
  */
-class UserProfilerViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel() {
+class UserProfilerViewModel(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) :
+    ViewModel() {
     private val TAG = "AccountViewModel"
     private val _uiState = MutableStateFlow(UserProfilerUIState())
     val uiState: StateFlow<UserProfilerUIState> = _uiState

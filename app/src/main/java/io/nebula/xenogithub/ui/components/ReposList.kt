@@ -44,7 +44,7 @@ fun ReposList(
     onRetry: () -> Unit,
     itemOnClick: (owner: String, repo: String) -> Unit
 ) {
-    Box(modifier = Modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()) {
         var isRefreshing by remember { mutableStateOf(false) }
         when {
             !isRefreshing && uiState.isLoading -> {
@@ -76,7 +76,6 @@ fun ReposList(
                 PullToRefreshBox(
                     isRefreshing = isRefreshing,
                     onRefresh = onRefresh,
-                    modifier = modifier,
                     state = state,
                     indicator = {
                         Indicator(
@@ -88,11 +87,11 @@ fun ReposList(
                         )
                     },
                 ) {
-                    val lazyListState = rememberSaveable(key = "shared", saver = lazyListStateSaver) {
-                        LazyListState()
-                    }
+                    val lazyListState =
+                        rememberSaveable(key = "shared", saver = lazyListStateSaver) {
+                            LazyListState()
+                        }
                     LazyColumn(
-                        modifier = modifier,
                         contentPadding = PaddingValues(12.dp),
                         state = lazyListState,
                         verticalArrangement = Arrangement.spacedBy(12.dp)

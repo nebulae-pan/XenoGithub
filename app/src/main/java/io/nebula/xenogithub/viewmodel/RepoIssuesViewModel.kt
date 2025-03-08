@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 /**
  * Created by nebula on 2025/3/7
  */
-class RepoIssuesViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel() {
+class RepoIssuesViewModel(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     private val TAG = "RepoIssuesViewModel"
     private val _uiState = MutableStateFlow(RepoIssuesUIState())
     val uiState: StateFlow<RepoIssuesUIState> = _uiState

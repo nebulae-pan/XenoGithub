@@ -27,7 +27,7 @@ fun ErrorScreen(retry: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(stringResource(R.string.homepage_error_hint), Modifier.padding(12.dp))
+        Text(stringResource(R.string.homepage_error_hint), Modifier.padding(24.dp))
         Text(
             stringResource(R.string.homepage_retry),
             color = MaterialTheme.colorScheme.primary,

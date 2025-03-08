@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 /**
  * Created by nebula on 2025/3/6
  */
-class SearchViewModel(private val dispatcher: CoroutineDispatcher) : ViewModel() {
+class SearchViewModel(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) : ViewModel() {
     private val TAG = "SearchViewModel"
     private val _uiState = MutableStateFlow(SearchUIState())
     val uiState: StateFlow<SearchUIState> = _uiState
