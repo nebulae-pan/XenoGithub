@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">XenoGithub</string>
+    <string name="homepage_error_hint">Something went wrong. Please check your connection and try again..</string>
+    <string name="homepage_retry">Retry</string>
+    <string name="homepage_sign_in">Sign in with Github</string>
+    <string name="homepage_search_hint">Search something..</string>
+    <string name="homepage_title">Github Trending</string>
+    <string name="search_title">Search</string>
+    <string name="search_language">language:</string>
+    <string name="empty_hint">There is nothing but echoing..</string>
+    <string name="following">following</string>
+    <string name="followers">followers</string>
+    <string name="home">Home</string>
+    <string name="account">Account</string>
+    <string name="issues">Issues:</string>
+    <string name="details">Details</string>
+    <string name="raise">raise</string>
+    <string name="homepage_need_sign_in">please sign in first</string>
+    <string name="issues_title">title</string>
+    <string name="issues_body">body</string>
+</resources>
